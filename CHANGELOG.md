@@ -5,6 +5,18 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
 
+## [5.6.0] — 2026-02-26
+### Changed
+- **Front matter compliance** — Removed non-standard fields (`license`, `metadata` block) from Skillforge's own front matter. Added `argument-hint` field. Only officially recognized fields are now used.
+- **Step 2 (Intake)** — Gerund naming convention (e.g., `analyzing-seo-pages`) is now the recommended default per official best practices. Noun form accepted as fallback.
+- **Step 3 (Front Matter)** — Explicitly lists all recognized fields and warns against custom fields. Removed `category` metadata guidance. Added `argument-hint` guidance.
+- **Step 4 (SOP Translation)** — Added "degrees of freedom" guidance for matching instruction specificity to task fragility. Added feedback loop / validation pattern guidance. Added warning against time-sensitive information.
+- **Step 5 (Scaffold)** — Added guidance to keep references one level deep from SKILL.md.
+- **Step 6 (Validate)** — Expanded checklist from 8 to 11 items: added checks for non-standard front matter, time-sensitive info, consistent terminology, and reference depth.
+- **Example skills** — Renamed to gerund form (`auditing-seo/`, `formatting-commits/`), moved into subdirectories, removed non-standard front matter (`license`, `metadata`), removed redundant `## Goal` sections, added validation step to SEO example.
+
+---
+
 ## [5.5.0] — 2026-02-25
 ### Added
 - **Step 0: Self-Update Check** — Skillforge now checks for newer versions on GitHub before every run. If an update is available, it displays a one-line notice with the `git pull` command. Non-blocking — does not interrupt the workflow.

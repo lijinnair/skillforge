@@ -1,12 +1,7 @@
 ---
 name: skillforge
 description: Generates highly optimized Agent Skills for both native Claude Code and the Antigravity system, according to official best practices and the "Progressive Disclosure" strategy. Use when the user wants to build a new skill, turn a workflow into a skill, optimize an existing prompt, or structure agent instructions for either ecosystem.
-license: MIT
-metadata:
-  author: Lijin Nair
-  github: https://github.com/lijinnair
-  website: https://lijinnair.com
-  version: "5.5.0"
+argument-hint: [skill-idea or workflow]
 ---
 
 # Skillforge SOP
@@ -17,7 +12,7 @@ metadata:
 - Only pause at steps marked **(CHECKPOINT)**.
 
 ## Step 0: Update Check
-Fetch `https://raw.githubusercontent.com/lijinnair/skillforge/main/VERSION` silently. Compare the remote version with the local version (`5.5.0`). If remote is newer, display: *"Skillforge v[remote] is available (you have v[local]). Run `git -C [skill-path] pull` to update."* where `[skill-path]` is the detected install location. Then proceed normally — do not block execution.
+Fetch `https://raw.githubusercontent.com/lijinnair/skillforge/main/VERSION` silently. Compare the remote version with the local version (`5.6.0`). If remote is newer, display: *"Skillforge v[remote] is available (you have v[local]). Run `git -C [skill-path] pull` to update."* where `[skill-path]` is the detected install location. Then proceed normally — do not block execution.
 
 ## Step 1: Sync Live Docs (CHECKPOINT)
 Fetch live documentation before any user interaction.
@@ -33,7 +28,7 @@ Fetch live documentation before any user interaction.
 
 ## Step 2: Intake & Scoping
 Collect from the user:
-- **Name:** kebab-case (e.g., `my-skill-name`)
+- **Name:** kebab-case, preferring gerund form (e.g., `analyzing-seo-pages`, `formatting-commits`). Noun form is acceptable if gerund is awkward.
 - **Category:** `dev` | `marketing` | `seo` | `document` | `data` | `ops`
 - **Ecosystem:** Claude Code (`~/.claude/skills`) or Antigravity (`~/.gemini/antigravity/skills`)
 - **Triggers:** Activation words or phrases
@@ -60,36 +55,42 @@ Search **ALL 9 sources in parallel** before building from scratch:
 - **Sources failed:** Note unreachable sources in the report. Use whatever succeeded. If ALL 9 fail, proceed to Step 3.
 
 ## Step 3: Front Matter Engineering
-Design front matter (`< 1024 chars`) per the docs synced in Step 1:
-- **Description:** Start with 3rd-person verb ("Analyzes...", "Generates..."). Include 3–5 trigger phrases.
-- **Category:** Add `category: [value]` metadata field.
+Design front matter (`< 1024 chars`) using ONLY officially recognized fields: `name`, `description`, `disable-model-invocation`, `user-invocable`, `allowed-tools`, `model`, `context`, `agent`, `argument-hint`, `hooks`. Do NOT add custom fields like `license`, `metadata`, `category`, `version`, or `generated-by`.
+- **Description:** Start with 3rd-person verb ("Analyzes...", "Generates..."). Include both what the skill does AND when to use it, with 3–5 trigger phrases.
 - **Invocation:** `disable-model-invocation: true` for destructive actions. `user-invocable: true` for explicit-only. Omit both for auto-discover.
+- **Argument hint:** Add `argument-hint: [hint]` if the skill accepts arguments (e.g., `argument-hint: [url]`).
 - **Advanced:** Add `context: fork` and `allowed-tools` only if required.
 
 ## Step 4: SOP Translation
 Convert the workflow into numbered imperative steps.
 - Each step starts with a command verb ("Extract...", "Analyze...", "Compile...").
 - Use `$ARGUMENTS` and backtick substitution (e.g., `!\`gh pr diff\``) for runtime context.
+- **Degrees of freedom:** Match specificity to task fragility. High freedom (multiple valid approaches) → text instructions. Medium freedom (preferred pattern) → pseudocode. Low freedom (fragile operations) → exact scripts. Not every skill needs rigid imperative steps.
+- **Feedback loops:** Where applicable, add a validation step (e.g., "Run validator → fix errors → repeat"). This pattern greatly improves output quality.
 - **Progressive Disclosure:** Do not embed data only needed for one path — link to it or load it conditionally.
+- **No time-sensitive info:** Do not include information that will become outdated (dates, version numbers, trending tools).
 
 ## Step 5: Scaffold Generation
 Output the `mkdir` command for the chosen ecosystem:
 - Claude: `mkdir -p ~/.claude/skills/[skill-name]`
 - Antigravity: `mkdir -p ~/.gemini/antigravity/skills/[skill-name]`
 
-Offload deterministic logic to `scripts/` if applicable. Follow with the complete `SKILL.md` code block.
+Offload deterministic logic to `scripts/` if applicable. Keep references one level deep from SKILL.md — avoid chains like SKILL.md → advanced.md → details.md. Follow with the complete `SKILL.md` code block.
 
 ## Step 6: Validate & Deliver
 Run this checklist internally — fix any failures before delivering output.
 
 - [ ] Front matter < 1024 characters
+- [ ] Only standard front matter fields used (no `license`, `metadata`, `category`, `version`, `generated-by`)
 - [ ] Body < 500 lines
 - [ ] Description starts with 3rd-person verb
-- [ ] Description has 3+ trigger phrases
-- [ ] `category` metadata present
+- [ ] Description has 3+ trigger phrases and includes "Use when..."
 - [ ] Invocation flags set correctly
 - [ ] All steps begin with imperative verb
 - [ ] Correct `mkdir` path for chosen ecosystem
+- [ ] No time-sensitive information
+- [ ] Consistent terminology throughout
+- [ ] References are one level deep from SKILL.md
 
 **Deliver:** Sync status → checklist results → `mkdir` command → full `SKILL.md` code block.
 

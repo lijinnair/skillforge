@@ -1,18 +1,10 @@
 ---
-name: seo-page-auditor
+name: auditing-seo
 description: Analyzes a single web page URL for SEO quality, identifying issues with title tags, meta descriptions, heading structure, and content. Use when the user says "audit this page", "check SEO for", or "analyze this URL for SEO". Outputs a structured audit report with prioritized fixes.
-license: MIT
-metadata:
-  author: Lijin Nair
-  category: seo
-  version: "1.0.0"
-  generated-by: skillforge
+argument-hint: [url]
 ---
 
-# SEO Page Auditor SOP
-
-## Goal
-Perform a comprehensive SEO audit on a single page URL provided by the user and deliver a prioritized, actionable fix list.
+# SEO Page Auditing SOP
 
 ## Execution Steps
 
@@ -30,9 +22,12 @@ Check and score each of the following elements:
 
 ### Step 3: Compile Prioritized Fix List
 Organize the findings into 3 tiers:
-- 🔴 **Critical:** Issues that directly harm rankings (e.g., missing title, no H1).
-- 🟡 **Important:** Issues that limit performance (e.g., meta description too long).
-- 🟢 **Suggestions:** Nice-to-have improvements.
+- **Critical:** Issues that directly harm rankings (e.g., missing title, no H1).
+- **Important:** Issues that limit performance (e.g., meta description too long).
+- **Suggestions:** Nice-to-have improvements.
 
-### Step 4: Deliver the Report
+### Step 4: Validate Completeness
+Review the audit against the elements in Step 2. If any element was skipped or could not be assessed, note it explicitly. Re-check that every Critical item has a specific, actionable fix.
+
+### Step 5: Deliver the Report
 Output the full audit as a formatted Markdown table with: Element | Status | Current Value | Recommended Fix.

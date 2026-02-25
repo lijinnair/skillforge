@@ -1,18 +1,9 @@
 ---
-name: git-commit-formatter
+name: formatting-commits
 description: Generates a well-structured, conventional Git commit message from the user's staged changes or a description of what they did. Use when the user says "write a commit message", "format my commit", or "help me commit this". Outputs a ready-to-paste commit message following the Conventional Commits specification.
-license: MIT
-metadata:
-  author: Lijin Nair
-  category: dev
-  version: "1.0.0"
-  generated-by: skillforge
 ---
 
-# Git Commit Formatter SOP
-
-## Goal
-Generate a clean, spec-compliant Git commit message using the Conventional Commits standard based on the user's staged diff or plain-language description.
+# Git Commit Formatting SOP
 
 ## Execution Steps
 
