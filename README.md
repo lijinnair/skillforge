@@ -44,7 +44,7 @@ Skillforge is a meta-skill — an AI agent that builds other AI agents. Give it 
 | 3 | **Discovery** — Searches 9 marketplaces in parallel to find existing similar skills |
 | 4 | **Front Matter** — Engineers a spec-compliant, sub-1024-char metadata block |
 | 5 | **SOP Translation** — Converts your workflow into an imperative execution pipeline |
-| 6 | **Self-Validation** — Audits its own output against 8 rules before delivery |
+| 6 | **Self-Validation** — Audits its own output against 11 rules before delivery |
 
 ## Why It Exists
 
