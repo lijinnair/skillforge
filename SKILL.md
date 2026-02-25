@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: Lijin Nair
   github: https://github.com/lijinnair
-  version: "5.2.0"
+  version: "5.3.0"
 ---
 
 # Claude/Antigravity Skill Builder SOP
@@ -13,12 +13,22 @@ metadata:
 ## Goal
 Design and generate a highly optimized `SKILL.md` file that strictly adheres to the most up-to-date official documentation and the "Progressive Disclosure" framework. The resulting skill must prevent context bloat, utilize an imperative execution pipeline, and accurately map tools and subagents where necessary. It must be scaffolded correctly based on whether it is intended for native Claude Code or the Antigravity ecosystem.
 
+## Execution Rules
+- **Parallel execution:** Fetch all URLs and search all marketplaces in parallel (not sequentially). Use concurrent tool calls.
+- **Auto-read:** All `read_url_content`, `search_web`, and `view_content_chunk` calls are non-destructive. Execute them without waiting for user approval.
+- **Only pause for user input** at explicit checkpoints marked with **(INTERACTIVE CHECKPOINT)**.
+
 ## Execution Steps
 
 ### Step 1: Synchronize with Live Infrastructure (INTERACTIVE CHECKPOINT)
-Before asking the user any questions about their skill, you MUST attempt to fetch and read the live documentation:
-1. Silently attempt to fetch the official Claude Code docs: `https://code.claude.com/docs/en/`, `https://code.claude.com/docs/en/skills`, and `https://code.claude.com/docs/en/hooks`.
-2. Silently attempt to fetch the official Antigravity docs: `https://antigravity.google/docs/home` and `https://antigravity.google/docs/skills`.
+Before asking the user any questions about their skill, you MUST fetch the live documentation.
+1. **Fetch ALL 5 URLs in parallel** (use concurrent tool calls, do NOT fetch sequentially):
+   - `https://code.claude.com/docs/en/`
+   - `https://code.claude.com/docs/en/skills`
+   - `https://code.claude.com/docs/en/hooks`
+   - `https://antigravity.google/docs/home`
+   - `https://antigravity.google/docs/skills`
+2. Read the relevant content chunks from the skills docs in parallel.
 3. **If ALL fetches succeed:** Synthesize the core best practices, then present the **Interactive Checkpoint** to the user, summarizing the rules you found. Say: *"Here are the latest best practices fetched live. Would you like to proceed?"* Do NOT continue to Step 2 until the user confirms.
 4. **If ANY fetch fails:** Do NOT silently proceed. Instead, present the **Fallback Checkpoint** to the user:
    - State which URL(s) failed.
@@ -37,7 +47,7 @@ Ask the user to describe the workflow they want to automate. Collect all of the 
 - **External Actions:** Does it require Bash, URL fetching, file reading, or subagent isolation (`context: fork`)?
 
 ### Step 2.5: Skill Discovery Check (Don't Reinvent the Wheel)
-Before building from scratch, silently search for existing similar skills across the following sources using `search_web` or `read_url_content`:
+**Execute ALL 9 marketplace searches in parallel** using concurrent `search_web` or `read_url_content` calls. Do NOT search them one by one.
 
 | # | Source | URL / Query |
 |---|---|---|
@@ -59,6 +69,7 @@ Before building from scratch, silently search for existing similar skills across
   - If the user chooses **(A)**: Fetch the existing skill, present it, and help them customise it instead of generating from Step 3.
   - If the user chooses **(B)**: Proceed to Step 3.
   - **DO NOT PROCEED** until the user has made a choice.
+- If **any marketplace searches fail**: Note which sources were unreachable in the Discovery Report. Base the results on whichever sources responded successfully. If ALL 9 sources fail, proceed silently to Step 3.
 
 ### Step 3: Front Matter Engineering
 Design the Front Matter (must be `< 1024 characters`) based on the documentation rules synced in Step 1.

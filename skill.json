@@ -1,9 +1,13 @@
 {
-  "id": "claude-skill-builder",
-  "version": "1.0.0",
+  "id": "skillforge",
+  "version": "5.3.0",
   "category": "ai",
   "keywords": ["claude-code", "skill", "builder", "create"],
-  "dependencies": ["claude-code"],
+  "dependencies": {
+    "required": ["claude-code"],
+    "recommended": ["claude-code"],
+    "complements": ["claude-command-builder", "claude-settings-expert"]
+  },
   "docs": null,
   "semanticTags": {
     "primary": ["skill_creation", "skill_builder", "expertise_packaging"],
@@ -21,10 +25,6 @@
     "parallelizable": true,
     "estimatedTokens": 4500,
     "activationThreshold": 0.7
-  },
-  "dependencies": {
-    "recommended": ["claude-code"],
-    "complements": ["claude-command-builder", "claude-settings-expert"]
   },
   "collaboration": {
     "canProvideDataTo": ["claude-code"],

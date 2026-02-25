@@ -1,16 +1,14 @@
 ```
-   _   _
-  ( ) ( )    S K I L L F O R G E
-  ( ~~~ )    ──────────────────────────────────────────────────────
-  ( ~~~ )    The skill that builds skills.  by @lijinnair  ·  v5.2.0  ·  MIT
-   '---'
+  S K I L L F O R G E
+  ──────────────────────────────────────────────────────
+  The skill that builds skills.  by @lijinnair  ·  v5.3.0  ·  MIT
 ```
 
 > **The skill that builds skills.** Generate optimized Claude Code & Antigravity SKILL.md files with live doc sync, marketplace search, and self-validation — in minutes.
 
 ---
 
-**Built by [Lijin Nair](https://github.com/lijinnair)** · MIT License · v5.2.0
+**Built by [Lijin Nair](https://github.com/lijinnair)** · MIT License · v5.3.0
 
 ---
 
@@ -57,7 +55,7 @@ Simply say: *"I want to build a new skill"* or run `/skillforge`
 
 ```
 skillforge/
-├── SKILL.md          ← The core SOP (active v5.0.0)
+├── SKILL.md          ← The core SOP (active v5.3.0)
 ├── README.md         ← This file
 ├── CHANGELOG.md      ← Full version history
 ├── CONTRIBUTING.md   ← How to contribute
@@ -68,15 +66,6 @@ skillforge/
 ```
 
 ## 👤 Author
-
-```
-██╗     ██╗     ██╗██╗███╗  ██╗    ███╗  ██╗ █████╗ ██╗██████╗ 
-██║     ██║     ██║██║████╗ ██║    ████╗ ██║██╔══██╗██║██╔══██╗
-██║     ██║     ██║██║██╔██╗██║    ██╔██╗██║███████║██║██████╔╝
-██║     ██║██   ██║██║██║╚████║    ██║╚████║██╔══██║██║██╔══██╗
-███████╗╚████████╔╝██║██║ ╚███║    ██║ ╚███║██║  ██║██║██║  ██║
-╚══════╝ ╚═══════╝ ╚═╝╚═╝  ╚══╝    ╚═╝  ╚══╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝
-```
 
 **Lijin Nair** — AI Systems Builder & Prompt Architect
 - GitHub: [@lijinnair](https://github.com/lijinnair)

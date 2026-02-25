@@ -5,6 +5,15 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
 
+## [5.3.0] — 2026-02-25
+### Added
+- **Execution Rules section** — New top-level rules enforcing parallel fetching, auto-read (no approval needed for non-destructive operations), and explicit checkpoint-only pauses.
+### Changed
+- **Step 1** now explicitly instructs concurrent fetching of all 5 URLs in parallel.
+- **Step 2.5** now explicitly instructs concurrent searching of all 9 marketplaces in parallel.
+
+---
+
 ## [5.2.0] — 2026-02-24
 ### Added
 - **2 new marketplaces added to Step 2.5 discovery sources:**

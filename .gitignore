@@ -6,6 +6,9 @@ _private/
 # macOS
 .DS_Store
 
+# PDFs — not part of the project
+*.pdf
+
 # Editor
 .vscode/
 .idea/

@@ -1,4 +1,4 @@
-# Contributing to Lijin Nair Claude & Antigravity Skill Builder
+# Contributing to Skillforge
 
 Thank you for your interest in contributing! This project is a meta-skill for generating optimized Claude Code and Antigravity skills. All contributions are welcome.
 
@@ -38,7 +38,7 @@ If you find a bug or something that doesn't work as expected:
 - New examples go in the `examples/` directory.
 - Use the naming convention: `[skill-name].SKILL.md`.
 - The example must be a real, working skill (not a placeholder).
-- Include the `generated-by: lijinnair-claude-antigravity-skill-builder` metadata field.
+- Include the `generated-by: skillforge` metadata field.
 
 ### Updating Documentation
 - Keep `README.md` concise — the 5-section format (What/Why/When/Where/How) should be preserved.
