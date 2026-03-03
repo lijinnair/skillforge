@@ -1,6 +1,6 @@
 {
   "name": "Skill with scripts and dependencies",
-  "skills": ["skillforge"],
+  "skills": ["claude-code-skillforge"],
   "query": "Build an Antigravity skill that validates JSON schema files against a dataset, with a Python validation script in scripts/. Category: data.",
   "expected_behavior": [
     "Name uses gerund form, kebab-case, ≤64 chars, lowercase+hyphens only, no reserved words",

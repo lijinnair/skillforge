@@ -1,6 +1,6 @@
 {
   "name": "Scan Mode — Audit all installed skills",
-  "description": "Tests Skillforge's ability to discover and audit all installed skills across both ecosystems.",
+  "description": "Tests Claude Code Skillforge's ability to discover and audit all installed skills across both ecosystems.",
   "prompt": "Scan my skills",
   "expected_behaviors": [
     "Scans ~/.claude/skills/ and ~/.gemini/antigravity/skills/ directories",

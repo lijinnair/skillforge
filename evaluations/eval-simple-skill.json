@@ -1,6 +1,6 @@
 {
   "name": "Simple skill — no scripts",
-  "skills": ["skillforge"],
+  "skills": ["claude-code-skillforge"],
   "query": "Build a Claude Code skill that formats commit messages from staged git diffs following Conventional Commits. Category: dev.",
   "expected_behavior": [
     "Name uses gerund form, kebab-case, ≤64 chars, lowercase+hyphens only, no reserved words",

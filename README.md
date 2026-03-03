@@ -1,6 +1,6 @@
 <div align="center">
 
-# Skillforge
+# Claude Code Skillforge
 
 ### The skill that builds, upgrades, and scans skills.
 
@@ -21,19 +21,19 @@ Generate and upgrade Claude Code &amp; Antigravity `SKILL.md` files — with liv
 
 ```bash
 # Clone into your Antigravity skills directory
-git clone https://github.com/lijinnair/skillforge ~/.gemini/antigravity/skills/skillforge
+git clone https://github.com/lijinnair/claude-code-skillforge ~/.gemini/antigravity/skills/claude-code-skillforge
 
 # Or into native Claude Code
-git clone https://github.com/lijinnair/skillforge ~/.claude/skills/skillforge
+git clone https://github.com/lijinnair/claude-code-skillforge ~/.claude/skills/claude-code-skillforge
 ```
 
-Then say: **"Build a new skill"**, **"Upgrade this skill"**, or **"Scan my skills"** — or run **`/skillforge`**
+Then say: **"Build a new skill"**, **"Upgrade this skill"**, or **"Scan my skills"** — or run **`/claude-code-skillforge`**
 
 ---
 
 ## What It Does
 
-Skillforge is a meta-skill that builds, upgrades, and scans Claude Code and Antigravity skills. Give it a raw idea, messy workflow, or an existing skill to upgrade, and it outputs a deploy-ready `SKILL.md` file that follows every official best practice.
+Claude Code Skillforge is a meta-skill that builds, upgrades, and scans Claude Code and Antigravity skills. Give it a raw idea, messy workflow, or an existing skill to upgrade, and it outputs a deploy-ready `SKILL.md` file that follows every official best practice.
 
 **Three modes** — all start with a live best practices sync, then branch:
 
@@ -67,7 +67,7 @@ Skillforge is a meta-skill that builds, upgrades, and scans Claude Code and Anti
 
 ## Why It Exists
 
-Most Claude Code and Antigravity skills are written like essays. Skillforge enforces **Progressive Disclosure** — the principle that every token in the context window must earn its place:
+Most Claude Code and Antigravity skills are written like essays. Claude Code Skillforge enforces **Progressive Disclosure** — the principle that every token in the context window must earn its place:
 
 - Minimal footprint in the context window
 - Deterministic logic offloaded to `scripts/`
@@ -93,7 +93,7 @@ The result: skills that are faster, more reliable, and cheaper to run.
 ## Repository Structure
 
 ```
-skillforge/
+claude-code-skillforge/
 ├── SKILL.md            ← The core SOP (v5.10.0)
 ├── VERSION             ← Current version string (used by self-update)
 ├── README.md           ← You are here
@@ -141,6 +141,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). All contributions welcome.
 
 <div align="center">
 
-If Skillforge saved you time, **[star the repo](https://github.com/lijinnair/skillforge)** — it helps others find it.
+If Claude Code Skillforge saved you time, **[star the repo](https://github.com/lijinnair/claude-code-skillforge)** — it helps others find it.
 
 </div>

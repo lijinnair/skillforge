@@ -1,4 +1,4 @@
-# Contributing to Skillforge
+# Contributing to Claude Code Skillforge
 
 Thank you for your interest in contributing! This project is a meta-skill for generating optimized Claude Code and Antigravity skills. All contributions are welcome.
 
@@ -35,7 +35,7 @@ If you find a bug or something that doesn't work as expected:
 - Bump the version in the `VERSION` file, the `version` field in `skill.json`, and the inline version in `SKILL.md` Step 0. Add a corresponding entry to `CHANGELOG.md`.
 
 ### Working with Modes
-Skillforge has three modes: **Build**, **Upgrade**, and **Scan**. When making changes:
+Claude Code Skillforge has three modes: **Build**, **Upgrade**, and **Scan**. When making changes:
 - **Build Mode** (Steps 2–6): The primary skill generation pipeline.
 - **Upgrade Mode** (Steps U1–U4): The diagnostic audit and auto-upgrade pipeline.
 - **Scan Mode** (Steps S1–S3): The installed skills health check pipeline.

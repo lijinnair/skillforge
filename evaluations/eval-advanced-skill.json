@@ -1,6 +1,6 @@
 {
   "name": "Advanced skill — MCP tools, conditional workflow, checklist",
-  "skills": ["skillforge"],
+  "skills": ["claude-code-skillforge"],
   "query": "Build a Claude Code skill that queries BigQuery for sales data and generates reports using the BigQuery MCP server. It should have different workflows for daily summaries vs monthly deep-dives, and include a progress checklist for the monthly workflow. Category: data.",
   "expected_behavior": [
     "Name uses gerund form, kebab-case, ≤64 chars, lowercase+hyphens only, no reserved words",

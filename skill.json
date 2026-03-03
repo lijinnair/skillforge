@@ -1,8 +1,8 @@
 {
-  "id": "skillforge",
+  "id": "claude-code-skillforge",
   "version": "5.10.0",
   "homepage": "https://lijinnair.com",
-  "repository": "https://github.com/lijinnair/skillforge",
+  "repository": "https://github.com/lijinnair/claude-code-skillforge",
   "category": "ai",
   "keywords": ["claude-code", "antigravity", "skill", "skill-builder", "meta-skill", "skill-upgrader", "skill-scanner", "prompt-engineering", "agent", "automation", "progressive-disclosure"],
   "dependencies": {

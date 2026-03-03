@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `skillforge` are documented here.
+All notable changes to `claude-code-skillforge` are documented here.
 Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
@@ -21,16 +21,16 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [5.9.0] — 2026-02-26
 ### Added
-- **Skill Scanner (Scan Mode)** — Say "Scan my skills" and Skillforge reads all SKILL.md files in `~/.claude/skills/` and `~/.gemini/antigravity/skills/`, runs a quick audit on each, and outputs a health report table sorted by most issues first.
+- **Skill Scanner (Scan Mode)** — Say "Scan my skills" and Claude Code Skillforge reads all SKILL.md files in `~/.claude/skills/` and `~/.gemini/antigravity/skills/`, runs a quick audit on each, and outputs a health report table sorted by most issues first.
 - **Scan Path (Steps S1–S3)** — Three-step scan pipeline: Discover Skills → Quick Audit → Health Report with actionable next steps.
-- **Post-delivery nudge** — After every Build or Upgrade delivery, Skillforge now suggests scanning or upgrading other installed skills.
+- **Post-delivery nudge** — After every Build or Upgrade delivery, Claude Code Skillforge now suggests scanning or upgrading other installed skills.
 
 ---
 
 ## [5.8.0] — 2026-02-26
 ### Added
-- **Skill Upgrader (Upgrade Mode)** — Skillforge now supports a second mode: feed it any existing SKILL.md and it runs a full 27-item diagnostic audit, reports Pass/Warning/Fail per item, then auto-upgrades the skill to latest best practices while preserving original intent and domain logic.
-- **Step 1.5: Mode Detection** — After syncing best practices, Skillforge now detects whether the user wants to build a new skill or upgrade an existing one, and branches accordingly.
+- **Skill Upgrader (Upgrade Mode)** — Claude Code Skillforge now supports a second mode: feed it any existing SKILL.md and it runs a full 27-item diagnostic audit, reports Pass/Warning/Fail per item, then auto-upgrades the skill to latest best practices while preserving original intent and domain logic.
+- **Step 1.5: Mode Detection** — After syncing best practices, Claude Code Skillforge now detects whether the user wants to build a new skill or upgrade an existing one, and branches accordingly.
 - **Upgrade Path (Steps U1–U4)** — Four-step upgrade pipeline: Ingest → Diagnostic Audit (with checkpoint) → Upgrade & Fix → Deliver with change summary.
 
 ### Changed
@@ -49,7 +49,7 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 - **Reference file guidance in Step 5** — Table of contents for files >100 lines, forward-slash-only paths.
 - **3-section validation checklist in Step 6** — Restructured from a flat 11-item list to 3 sections: Core quality (16 items), Code & scripts (8 items), Post-delivery recommendations (3 items) — 27 items total, aligned with the official checklist structure.
 - **Post-delivery testing recommendations** — Step 6 now recommends testing with Haiku/Sonnet/Opus, creating 3+ evaluation scenarios, and testing with real usage before sharing.
-- **`evaluations/` directory** — 3 evaluation scenario files for testing Skillforge-generated skills: simple skill (no scripts), skill with scripts and dependencies, advanced skill (MCP tools + conditional workflow + checklist pattern).
+- **`evaluations/` directory** — 3 evaluation scenario files for testing Claude Code Skillforge-generated skills: simple skill (no scripts), skill with scripts and dependencies, advanced skill (MCP tools + conditional workflow + checklist pattern).
 
 ### Changed
 - **Step 4 (SOP Translation)** — Reorganized into base rules + "Authoring patterns" subsection for cleaner progressive disclosure.
@@ -60,7 +60,7 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [5.6.0] — 2026-02-26
 ### Changed
-- **Front matter compliance** — Removed non-standard fields (`license`, `metadata` block) from Skillforge's own front matter. Added `argument-hint` field. Only officially recognized fields are now used.
+- **Front matter compliance** — Removed non-standard fields (`license`, `metadata` block) from Claude Code Skillforge's own front matter. Added `argument-hint` field. Only officially recognized fields are now used.
 - **Step 2 (Intake)** — Gerund naming convention (e.g., `analyzing-seo-pages`) is now the recommended default per official best practices. Noun form accepted as fallback.
 - **Step 3 (Front Matter)** — Explicitly lists all recognized fields and warns against custom fields. Removed `category` metadata guidance. Added `argument-hint` guidance.
 - **Step 4 (SOP Translation)** — Added "degrees of freedom" guidance for matching instruction specificity to task fragility. Added feedback loop / validation pattern guidance. Added warning against time-sensitive information.
@@ -72,10 +72,10 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [5.5.0] — 2026-02-25
 ### Added
-- **Step 0: Self-Update Check** — Skillforge now checks for newer versions on GitHub before every run. If an update is available, it displays a one-line notice with the `git pull` command. Non-blocking — does not interrupt the workflow.
+- **Step 0: Self-Update Check** — Claude Code Skillforge now checks for newer versions on GitHub before every run. If an update is available, it displays a one-line notice with the `git pull` command. Non-blocking — does not interrupt the workflow.
 - **VERSION file** — New root-level file containing the current version string, used by the update check mechanism.
 ### Changed
-- This pattern will be baked into every skill Skillforge generates, making all Skillforge-built skills self-update-aware.
+- This pattern will be baked into every skill Claude Code Skillforge generates, making all Claude Code Skillforge-built skills self-update-aware.
 
 ---
 
@@ -113,7 +113,7 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [5.1.0] — 2026-02-24
 ### Added
-- **Step 2.5: Skill Discovery Check** — Before building any skill from scratch, Skillforge now silently searches 7 known marketplaces and directories for existing similar skills:
+- **Step 2.5: Skill Discovery Check** — Before building any skill from scratch, Claude Code Skillforge now silently searches 7 known marketplaces and directories for existing similar skills:
   1. [Smithery](https://smithery.ai) — 100K+ skills registry for Claude Code
   2. [SkillsMP](https://skillsmp.com) — 87K+ community-indexed agent skills
   3. [SkillsLLM](https://skillsllm.com) — AI skills for Claude Code, Codex CLI, and ChatGPT

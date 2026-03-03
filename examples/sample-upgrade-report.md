@@ -1,6 +1,6 @@
 # Sample Upgrade Report
 
-Example output from Skillforge's **Upgrade Mode**.
+Example output from Claude Code Skillforge's **Upgrade Mode**.
 
 ---
 

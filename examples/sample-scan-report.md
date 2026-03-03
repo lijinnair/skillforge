@@ -1,6 +1,6 @@
 # Sample Scan Report
 
-Example output from Skillforge's **Scan Mode**.
+Example output from Claude Code Skillforge's **Scan Mode**.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "Upgrade Mode — Fix a poorly structured skill",
-  "description": "Tests Skillforge's ability to diagnose issues in an existing skill and upgrade it to latest best practices.",
+  "description": "Tests Claude Code Skillforge's ability to diagnose issues in an existing skill and upgrade it to latest best practices.",
   "prompt": "Upgrade this skill:\n\n---\nname: seo_analyzer\nlicense: MIT\ndescription: A tool that analyzes SEO\n---\n\n# SEO Analyzer\n\n## Goal\nAnalyze SEO for websites.\n\n## Steps\n1. The user provides a URL.\n2. The tool checks the title tag.\n3. The output should include recommendations.",
   "expected_behaviors": [
     "Detects non-standard 'license' field in front matter",
