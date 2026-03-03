@@ -65,6 +65,202 @@ Claude Code Skillforge is a meta-skill that builds, upgrades, and scans Claude C
 | S2 | **Quick Audit** — Runs key checks on each skill |
 | S3 | **Health Report** — Outputs a table sorted by most issues first |
 
+## How It Works
+
+### High-Level Architecture
+
+```mermaid
+flowchart TD
+    A([User invokes Skillforge]) --> B[Step 0: Update Check]
+    B --> C[Step 1: Sync Live Best Practices]
+    C --> D{Step 1.5: Mode Detection}
+
+    D -->|"build / create / new"| E[Build Mode]
+    D -->|"upgrade / audit / fix"| F[Upgrade Mode]
+    D -->|"scan / health check"| G[Scan Mode]
+
+    E --> E1[Intake & Scoping]
+    E1 --> E2[Discovery — 10 Sources]
+    E2 --> E3[Front Matter Engineering]
+    E3 --> E4[SOP Translation]
+    E4 --> E5[Scaffold Generation]
+    E5 --> E6[Validate & Deliver]
+
+    F --> F1[Ingest Existing SKILL.md]
+    F1 --> F2[Diagnostic Audit — 27 Items]
+    F2 --> F3[Upgrade & Fix]
+    F3 --> F4[Deliver Upgraded Skill]
+
+    G --> G1[Discover SKILL.md Files]
+    G1 --> G2[Quick Audit Each Skill]
+    G2 --> G3[Health Report Table]
+
+    style A fill:#7c3aed,color:#fff
+    style D fill:#f59e0b,color:#000
+    style E fill:#3b82f6,color:#fff
+    style F fill:#10b981,color:#fff
+    style G fill:#ef4444,color:#fff
+```
+
+### Build Mode — Full Pipeline
+
+```mermaid
+flowchart LR
+    subgraph sync [" Live Sync "]
+        S1[Fetch 5 docs URLs<br/>in parallel]
+        S1 --> S2{All succeeded?}
+        S2 -->|Yes| S3[Present best<br/>practices summary]
+        S2 -->|No| S4[Fall back to<br/>cached knowledge]
+    end
+
+    subgraph intake [" Intake "]
+        I1[Collect name,<br/>category, ecosystem]
+        I1 --> I2[Define triggers,<br/>inputs, outputs]
+    end
+
+    subgraph discovery [" Discovery "]
+        D1[Search 10 sources<br/>in parallel]
+        D1 --> D2{Match found?}
+        D2 -->|Yes| D3[Present report —<br/>Customise or Build new?]
+        D2 -->|No| D4[Proceed to build]
+    end
+
+    subgraph build [" Build "]
+        B1[Engineer<br/>front matter]
+        B1 --> B2[Translate workflow<br/>to SOP steps]
+        B2 --> B3[Generate scaffold<br/>+ SKILL.md]
+    end
+
+    subgraph validate [" Validate "]
+        V1[Run 27-item<br/>checklist]
+        V1 --> V2{All pass?}
+        V2 -->|No| V3[Fix failures]
+        V3 --> V1
+        V2 -->|Yes| V4[Deliver output]
+    end
+
+    sync --> intake --> discovery --> build --> validate
+```
+
+### Upgrade Mode — Diagnostic & Fix
+
+```mermaid
+flowchart TD
+    U0([Existing SKILL.md provided]) --> U1[Parse front matter & body]
+    U1 --> U2[Run 27-item checklist]
+
+    U2 --> U3{Results}
+
+    U3 --> P[Pass items]
+    U3 --> W[Warning items]
+    U3 --> F[Fail items]
+
+    P & W & F --> U4[Present diagnostic report]
+    U4 --> U5{User confirms<br/>upgrade?}
+    U5 -->|No| U6([End])
+    U5 -->|Yes| U7[Apply fixes —<br/>preserve original intent]
+
+    U7 --> U8[Change summary +<br/>upgraded SKILL.md]
+
+    style U0 fill:#10b981,color:#fff
+    style P fill:#22c55e,color:#fff
+    style W fill:#f59e0b,color:#000
+    style F fill:#ef4444,color:#fff
+```
+
+### Scan Mode — Health Check
+
+```mermaid
+flowchart LR
+    S0([User says<br/>'Scan my skills']) --> S1
+
+    subgraph discover [" Discover "]
+        S1[Scan ~/.claude/skills/]
+        S2[Scan ~/.gemini/antigravity/skills/]
+        S1 & S2 --> S3[List all<br/>SKILL.md files]
+    end
+
+    subgraph audit [" Audit Each Skill "]
+        S3 --> A1[Front matter check]
+        S3 --> A2[Name constraints]
+        S3 --> A3[Description format]
+        S3 --> A4[Body line count]
+        S3 --> A5[Imperative verbs]
+    end
+
+    subgraph report [" Report "]
+        A1 & A2 & A3 & A4 & A5 --> R1[Health Report Table<br/>sorted by most issues]
+    end
+
+    style S0 fill:#ef4444,color:#fff
+```
+
+### 10-Source Discovery — Parallel Search
+
+```mermaid
+flowchart TD
+    Q([Skill name]) --> P[Parallel search — all 10 sources]
+
+    P --> M1[Smithery]
+    P --> M2[SkillsMP]
+    P --> M3[SkillsLLM]
+    P --> M4[SkillHub]
+    P --> M5[Antigravity Skill Vault]
+    P --> M6[Awesome Skills]
+    P --> M7[GitHub Topics]
+    P --> M8[Composio]
+    P --> M9[AI Templates]
+    P --> M10[Awesome Claude Skills]
+
+    M1 & M2 & M3 & M4 & M5 & M6 & M7 & M8 & M9 & M10 --> R{Results}
+
+    R -->|No match| B[Build from scratch]
+    R -->|Match found| C[Discovery Report —<br/>Customise or Build new?]
+
+    style Q fill:#7c3aed,color:#fff
+    style P fill:#3b82f6,color:#fff
+```
+
+### Self-Validation Checklist
+
+```mermaid
+flowchart TD
+    V([Generated SKILL.md]) --> C1
+
+    subgraph core [" Core Quality — 16 checks "]
+        C1[Front matter < 1024 chars]
+        C2[Standard fields only]
+        C3[Name constraints]
+        C4[Description format]
+        C5[Body < 500 lines]
+        C6[Imperative verbs]
+        C7[Progressive disclosure]
+        C8[...]
+    end
+
+    subgraph code [" Code & Scripts — 8 checks "]
+        C9[Error handling]
+        C10[No voodoo constants]
+        C11[Packages listed]
+        C12[...]
+    end
+
+    subgraph post [" Post-Delivery — 3 checks "]
+        C13[Test across models]
+        C14[Evaluation scenarios]
+        C15[Real usage tests]
+    end
+
+    core & code & post --> D{All pass?}
+    D -->|No| FIX[Fix failures] --> V
+    D -->|Yes| SHIP([Deliver to user])
+
+    style V fill:#f59e0b,color:#000
+    style SHIP fill:#22c55e,color:#fff
+```
+
+---
+
 ## Why It Exists
 
 Most Claude Code and Antigravity skills are written like essays. Claude Code Skillforge enforces **Progressive Disclosure** — the principle that every token in the context window must earn its place:
